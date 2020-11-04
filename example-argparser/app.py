@@ -1,19 +1,19 @@
 #!/usr/bin/python3
 import argparse
 
-APP_DESCRIPTION = "A simple console program using argument parser module"
+APP_DESCRIPTION = "A simple console program using argument parser module to add numbers"
 
-def main():
+def boot():
     global args
     parser = argparse.ArgumentParser(description=APP_DESCRIPTION)
-    parser.add_argument('pos', nargs=1, help="positional argument")
-    parser.add_argument('--contains', help="Does it contain")
+    parser.add_argument('num1', help="The first number", type=float)
+    parser.add_argument('num2', help="The second number", type=float)
     args = parser.parse_args()
 
 def action():
-    value = int(args.pos) * 2
-    print("Arguments contain: %d"%(value))
+    return args.num1 + args.num2
 
 if __name__ == "__main__":
-    main()
-    action()
+    boot()
+    value = action()
+    print("Sum is: %.2f"%(value))
